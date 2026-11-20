@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Первый час с нейросетью</title>
+<meta name="description" content="Памятка для тех, кто ни разу не пробовал нейросети: как начать, как с ней говорить и 20 готовых запросов.">
+<style>
+:root{--bg:#FFFFFF;--ink:#111111;--muted:#6F6F6F;--soft:#F2F2F2;--line:#E2E2E2;--red:#E60023;--green:#00A67E;
+--f:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Roboto,Arial,sans-serif;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#111111;--ink:#F1F1F1;--muted:#A5A5A5;--soft:#1E1E1E;--line:#333;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#111111;--ink:#F1F1F1;--muted:#A5A5A5;--soft:#1E1E1E;--line:#333;color-scheme:dark}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:17px/1.55 var(--f)}
+main{max-width:680px;margin:0 auto;padding:28px 16px 64px}
+.tag{display:inline-block;background:var(--red);color:#fff;font-weight:700;font-size:13px;letter-spacing:.04em;border-radius:999px;padding:6px 14px}
+h1{font-size:36px;line-height:1.1;margin:14px 0 10px;text-wrap:balance}
+h2{font-size:23px;line-height:1.2;margin:40px 0 12px;text-wrap:balance}
+h3{font-size:18px;margin:22px 0 10px}
+p{margin:0 0 12px}
+.lead{font-size:19px;color:var(--muted)}
+.big{background:var(--soft);border-radius:20px;padding:18px 18px;font-size:19px;font-weight:600;margin:20px 0 0}
+.cards{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.cards li{background:var(--soft);border-radius:18px;padding:14px 16px}
+.cards b{display:block;font-size:17px;margin-bottom:2px}
+.cards span{color:var(--muted);font-size:15px;display:block}
+.steps{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.steps li{background:var(--soft);border-radius:18px;padding:14px 16px;display:flex;gap:14px;align-items:flex-start}
+.num{flex:none;width:32px;height:32px;border-radius:50%;background:var(--ink);color:var(--bg);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px}
+.steps b{display:block;font-size:17px}
+.steps span{color:var(--muted);font-size:15px;display:block;margin-top:2px}
+.steps a,.note a{color:var(--red);font-weight:700;text-decoration:none}
+.formula{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:14px 0}
+.formula div{border:2px solid var(--line);border-radius:16px;padding:12px 14px}
+.formula b{display:block;color:var(--red);font-size:15px;letter-spacing:.05em}
+.formula span{font-size:15px}
+.example{border-left:4px solid var(--red);padding:10px 14px;background:var(--soft);border-radius:0 14px 14px 0;font-size:16px}
+.pr{background:var(--soft);border-radius:16px;padding:12px 14px;margin:0 0 8px;display:flex;gap:10px;align-items:flex-start}
+.pr p{margin:0;flex:1;font-size:15.5px}
+.pr button{flex:none;border:0;background:var(--ink);color:var(--bg);font:700 13px var(--f);border-radius:999px;padding:8px 12px;cursor:pointer;min-width:96px}
+.pr button.ok{background:var(--green);color:#fff}
+.check{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.check li{padding-left:30px;position:relative}
+.check li:before{content:"✓";position:absolute;left:4px;top:0;color:var(--green);font-weight:800}
+.stop li:before{content:"✕";color:var(--red)}
+.note{border:2px solid var(--line);border-radius:18px;padding:14px 16px;margin-top:14px}
+.cta{display:inline-block;margin-top:8px;background:var(--red);color:#fff;font-weight:700;border-radius:999px;padding:13px 24px;text-decoration:none}
+footer{margin-top:40px;color:var(--muted);font-size:14px}
+@media (max-width:420px){h1{font-size:30px}.formula{grid-template-columns:1fr}.pr{flex-direction:column}.pr button{align-self:flex-end}}
+</style>
+</head>
+<body>
+<main>
+<span class="tag">ПАМЯТКА · ХИТ_КОД</span>
+<h1>Первый час с нейросетью</h1>
+<p class="lead">Для тех, кто ни разу не пробовал или попробовал и бросил. Разбираться в компьютерах не нужно. Если вы умеете писать сообщения в мессенджере, вы уже умеете говорить с нейросетью.</p>
+<p class="big">Нейросеть — не программа, которую надо осваивать. Это помощник, с которым надо просто поговорить. Как с толковым новым сотрудником: объяснили задачу — получили результат.</p>
+
+<h2>Три страха, которые мешают начать</h2>
+<ul class="cards">
+<li><b>«Это сложно, я не технарь»</b><span>Пишете обычными словами, как другу. Можно голосом: нажали на микрофон и сказали.</span></li>
+<li><b>«Наговорю глупостей или что-то сломаю»</b><span>Сломать ничего нельзя. Не понравился ответ — напишите «переделай». Она не обижается и не устаёт.</span></li>
+<li><b>«Меня заменят, это опасно»</b><span>Вас заменит не нейросеть, а человек, который ею пользуется. А безопасность держится на одном простом правиле — оно ниже.</span></li>
+</ul>
+
+<h2>Как начать — 10 минут</h2>
+<ol class="steps">
+<li><div class="num">1</div><div><b>Выберите одну нейросеть</b>Хватит одной, пробовать все сразу не нужно.<span>ChatGPT — <a href="https://chatgpt.com" target="_blank" rel="noopener">chatgpt.com</a>, или Claude — <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a></span></div></li>
+<li><div class="num">2</div><div><b>Заведите аккаунт</b>Удобнее всего — кнопка «Войти через Google».<span>Чтобы попробовать, хватит бесплатной версии. Платная подписка (ChatGPT Plus или Claude Pro) понадобится позже, когда войдёте во вкус.</span></div></li>
+<li><div class="num">3</div><div><b>Поставьте приложение на телефон</b>Так нейросеть всегда под рукой, а говорить с ней можно голосом.<span>Ищите в App Store или Google Play по названию.</span></div></li>
+<li><div class="num">4</div><div><b>Задайте первый вопрос</b>Любой. Например: «Привет! Я впервые пользуюсь нейросетью. Расскажи простыми словами, чем ты можешь мне помочь в обычной жизни».</div></li>
+</ol>
+<div class="note">Не открывается сайт или не получается войти? Напишите Андрею: <a href="https://t.me/drxutman" target="_blank" rel="noopener">t.me/drxutman</a>. Подскажем.</div>
+
+<h2>Как с ней говорить: КТО · ЧТО · ДЛЯ КОГО · КАК</h2>
+<p>Чем понятнее задача, тем лучше ответ. Запомните четыре слова:</p>
+<div class="formula">
+<div><b>КТО</b><span>Кем ей быть: «Ты опытный кондитер», «Ты добрый учитель»</span></div>
+<div><b>ЧТО</b><span>Что сделать: придумай, напиши, объясни, сократи</span></div>
+<div><b>ДЛЯ КОГО</b><span>«…для моих клиенток», «…для ребёнка 8 лет»</span></div>
+<div><b>КАК</b><span>Коротко, списком, по-дружески, 5 вариантов</span></div>
+</div>
+<p><b>Было:</b> «Напиши пост».</p>
+<p class="example"><b>Стало:</b> «Ты опытный маркетолог. Напиши пост про мои домашние торты для мам из моего района. Коротко, тепло, с призывом заказать к Новому году. Дай 3 варианта».</p>
+
+<h3>И ещё два правила</h3>
+<ul class="check">
+<li><b>Переспрашивайте.</b> «Сделай короче», «попроще», «другой вариант», «добавь юмора». Первый ответ — черновик, а не приговор.</li>
+<li><b>Давайте примеры.</b> «Вот как я обычно пишу: …» — и она подстроится под ваш стиль.</li>
+</ul>
+
+<h2>Одно правило безопасности</h2>
+<p>Не пишите нейросети то, что не показали бы постороннему человеку:</p>
+<ul class="check stop">
+<li>пароли и коды из СМС;</li>
+<li>номера карт и счетов;</li>
+<li>паспортные данные и адреса.</li>
+</ul>
+<p style="margin-top:12px">Всё остальное можно смело спрашивать. И проверяйте важные факты: нейросеть иногда уверенно ошибается, как и люди.</p>
+
+<h2>20 готовых запросов — копируйте и пробуйте</h2>
+<p>Нажмите «Скопировать», вставьте в нейросеть и замените слова в квадратных скобках на свои.</p>
+
+<h3>🏠 Для дома и семьи</h3>
+<div class="pr"><p>Составь меню на неделю для семьи из [3 человек] с бюджетом [5 000 ₽]. Блюда простые, до 40 минут. В конце — общий список покупок по отделам магазина.</p><button>Скопировать</button></div>
+<div class="pr"><p>Придумай сценарий детского дня рождения дома для [6] детей [7 лет] на 2 часа: игры, конкурсы, что купить заранее.</p><button>Скопировать</button></div>
+<div class="pr"><p>Объясни моему ребёнку [10 лет], что такое [дроби], на примерах из жизни. Потом дай 3 простые задачки с ответами.</p><button>Скопировать</button></div>
+<div class="pr"><p>У меня в холодильнике есть [курица, рис, морковь, сыр]. Что можно приготовить на ужин? Дай 3 варианта с пошаговым рецептом.</p><button>Скопировать</button></div>
+<div class="pr"><p>Помоги спланировать поездку в [Сочи] на [3 дня] с ребёнком: что посмотреть, где поесть, как распределить дни, чтобы не устать.</p><button>Скопировать</button></div>
+
+<h3>💬 Письма и поздравления</h3>
+<div class="pr"><p>Напиши тёплое поздравление с днём рождения для [бабушки, ей 80 лет]. Без шаблонных фраз, от внука. Упомяни, что она [печёт лучшие пироги].</p><button>Скопировать</button></div>
+<div class="pr"><p>Помоги вежливо, но твёрдо написать [управляющей компании] о том, что [третью неделю не работает лифт]. Попроси решить до [даты].</p><button>Скопировать</button></div>
+<div class="pr"><p>Переведи на [английский] это сообщение и сделай его вежливым: [ваш текст].</p><button>Скопировать</button></div>
+<div class="pr"><p>Вот письмо, которое я получил: [вставьте текст]. Объясни простыми словами, что от меня хотят, и предложи короткий ответ.</p><button>Скопировать</button></div>
+<div class="pr"><p>Мне нужно отказать [подруге] в [просьбе одолжить машину], не обидев её. Напиши 3 варианта сообщения.</p><button>Скопировать</button></div>
+
+<h3>💼 Для работы и своего дела</h3>
+<div class="pr"><p>Ты опытный маркетолог. Я [мастер маникюра в Краснодаре]. Придумай 10 идей постов на месяц для моих соцсетей — коротко, с заголовком к каждому.</p><button>Скопировать</button></div>
+<div class="pr"><p>Клиентка написала: «[Дорого, у других дешевле]». Помоги ответить вежливо и уверенно, без оправданий. 3 варианта.</p><button>Скопировать</button></div>
+<div class="pr"><p>Напиши понятное описание моей услуги [выпечка тортов на заказ] для прайс-листа: что входит, сроки, как заказать. Коротко и тепло.</p><button>Скопировать</button></div>
+<div class="pr"><p>Сократи этот текст в 3 раза и оставь главное: [вставьте длинный текст или протокол встречи].</p><button>Скопировать</button></div>
+<div class="pr"><p>Помоги сделать таблицу учёта [заказов]: какие столбцы нужны и как посчитать итог за месяц. Объясни так, будто я впервые открываю таблицу.</p><button>Скопировать</button></div>
+
+<h3>🌱 Для себя</h3>
+<div class="pr"><p>Объясни простыми словами, что такое [инфляция], как будто мне 12 лет. Потом приведи пример из жизни.</p><button>Скопировать</button></div>
+<div class="pr"><p>Я хочу начать [читать по 20 минут в день]. Составь план на 30 дней с маленькими шагами, чтобы я не бросил.</p><button>Скопировать</button></div>
+<div class="pr"><p>Посоветуй 5 книг, похожих на [название любимой книги]. К каждой — одно предложение, чем она зацепит.</p><button>Скопировать</button></div>
+<div class="pr"><p>Я умею [вязать]. Предложи 5 идей, как на этом можно подрабатывать, и с чего начать на этой неделе.</p><button>Скопировать</button></div>
+<div class="pr"><p>Задавай мне по одному вопросу, чтобы понять, чем ты можешь быть мне полезен каждый день. После 5 вопросов дай список из 10 идей.</p><button>Скопировать</button></div>
+
+<h2>Задание на первый час</h2>
+<p>Пять шагов, после каждого остаётся готовая вещь, которую можно показать дома:</p>
+<ol class="steps">
+<li><div class="num">1</div><div><b>Спросите голосом</b><span>Нажмите микрофон и задайте любой вопрос, который давно хотели кому-то задать.</span></div></li>
+<li><div class="num">2</div><div><b>Напишите текст по формуле</b><span>Поздравление, пост или письмо — через КТО · ЧТО · ДЛЯ КОГО · КАК.</span></div></li>
+<li><div class="num">3</div><div><b>Улучшите ответ</b><span>Три раза попросите: «короче», «теплее», «другой вариант». Почувствуйте, что вы управляете результатом.</span></div></li>
+<li><div class="num">4</div><div><b>Сделайте картинку</b><span>«Нарисуй открытку к [празднику] с [котом в шарфе], тёплые цвета».</span></div></li>
+<li><div class="num">5</div><div><b>Решите свою задачу</b><span>Ту, что висит давно. Просто опишите её нейросети, как другу.</span></div></li>
+</ol>
+
+<h2>Получилось? Это только начало</h2>
+<p>За один день на интенсиве <b>«ИИшница»</b> вы научитесь доверять нейросети рутину: тексты, картинки, планы, ответы клиентам. Сделаете всё сами, рядом с ведущим, а уйдёте с готовыми результатами под свою жизнь или работу.</p>
+<p>Напишите Андрею слово <b>ПОМОЩНИК</b> — пришлём даты ближайших встреч.</p>
+<a class="cta" href="https://t.me/drxutman" target="_blank" rel="noopener">Написать в Telegram</a>
+
+<footer>Памятка ХИТ_КОД · Андрей Хитман · Instagram <a href="https://www.instagram.com/xut_kod/" target="_blank" rel="noopener" style="color:inherit">@xut_kod</a> · Telegram <a href="https://t.me/idguy_it" target="_blank" rel="noopener" style="color:inherit">@idguy_it</a></footer>
+</main>
+<script>
+document.querySelectorAll('.pr button').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=b.previousElementSibling.textContent;
+    var done=function(){b.textContent='Готово ✓';b.classList.add('ok');setTimeout(function(){b.textContent='Скопировать';b.classList.remove('ok')},1600)};
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,function(){fallback(t);done()})}else{fallback(t);done()}
+  });
+});
+function fallback(t){var a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);a.select();try{document.execCommand('copy')}catch(e){}document.body.removeChild(a)}
+</script>
+</body>
+</html>
